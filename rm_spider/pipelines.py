@@ -11,6 +11,4 @@ from scrapy.pipelines.files import FilesPipeline
 class RmSpiderPipeline(FilesPipeline):
 
     def file_path(self, request, response=None, info=None, *, item=None):
-        if self.spiderinfo.spider.name == "njust":
-            return urlparse(request.url).path.split("/", 2)[-1]
         return '_'.join(request.url.rsplit('/', 3)[-3:])
